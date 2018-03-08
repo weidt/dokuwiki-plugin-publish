@@ -125,6 +125,14 @@ class helper_plugin_publish extends DokuWiki_Plugin {
         }
         return $approvals;
     }
+    
+    function hasRevisionTag($id = null) {
+        $meta = $this->getMeta($id);
+        if (isset($meta['relation']['references']['tag:revision'])) {
+            return true;
+        }
+        return false;
+    }
 
     function getMeta($id = null) {
         global $ID;
