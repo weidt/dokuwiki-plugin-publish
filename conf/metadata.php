@@ -13,3 +13,6 @@ $meta['delete attic on first approve'] = array('onoff');
 $meta['send_mail_on_approve'] = array('onoff');
 $meta['apr_mail_receiver'] = array('string');
 $meta['apr_approved_text'] = array('string');
+
+$meta['apr_use_tag'] = array('onoff');
+$meta['apr_tag'] = array('string');
