@@ -13,3 +13,6 @@ $conf['delete attic on first approve'] = 0;
 $conf['send_mail_on_approve'] = 0;
 $conf['apr_mail_receiver'] = '';
 $conf['apr_approved_text'] = 'Approved';
+
+$conf['apr_use_tag'] = '1';
+$conf['apr_tag'] = 'revision';
