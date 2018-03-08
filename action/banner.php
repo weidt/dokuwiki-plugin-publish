@@ -64,13 +64,19 @@ class action_plugin_publish_banner extends DokuWiki_Action_Plugin {
     }
 
     function showBanner() {
-        if ($this->hlp->isCurrentRevisionApproved()) {
-            $class = 'approved_yes';
-        } else {
-            if ($this->hlp->isHiddenForUser()) {
+        
+        if ($this->hlp->hasRevisionTag()) {
+                if ($this->hlp->isCurrentRevisionApproved()) {
+                    $class = 'approved_yes';
+                } else {
+                    if ($this->hlp->isHiddenForUser()) {
+                        return;
+                    }
+                    $class = 'approved_no';
+                }
+        }
+        else {
                 return;
-            }
-            $class = 'approved_no';
         }
 
         printf('<div class="approval %s">', $class);
