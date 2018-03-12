@@ -65,7 +65,7 @@ class action_plugin_publish_banner extends DokuWiki_Action_Plugin {
 
     function showBanner() {
         
-        if ($this->hlp->hasRevisionTag()) {
+        if ($this->hlp->hasRevisionTag() or $this->getConf('apr_use_tag') == 0 ){
                 if ($this->hlp->isCurrentRevisionApproved()) {
                     $class = 'approved_yes';
                 } else {

@@ -111,18 +111,20 @@ class syntax_plugin_publish extends DokuWiki_Syntax_Plugin {
                 //excluded this
             }
 
-            $renderer->doc .= '<tr class="apr_table';
-            if($approved == '') { $renderer->doc .= ' apr_never'; }
-            $renderer->doc .= '"><td class="apr_page"><a href="';
-            $renderer->doc .= wl($page[0]);
-            $renderer->doc .= '">';
-            $renderer->doc .= $page[0];
-            $renderer->doc .= '</a></td><td class="apr_prev">';
-            $renderer->doc .= $approved;
-            $renderer->doc .= '</td><td class="apr_upd">';
-            $renderer->doc .= $updated;
-            $renderer->doc .= '</td></tr>';
-
+			if ($this->hlp->hasRevisionTag($page[0]) or $this->getConf('apr_use_tag') == 0 ){
+				$renderer->doc .= '<tr class="apr_table';
+				if($approved == '') { $renderer->doc .= ' apr_never'; }
+				$renderer->doc .= '"><td class="apr_page"><a href="';
+				$renderer->doc .= wl($page[0]);
+				$renderer->doc .= '">';
+				$renderer->doc .= $page[0];
+				$renderer->doc .= '</a></td><td class="apr_prev">';
+				$renderer->doc .= $approved;
+				$renderer->doc .= '</td><td class="apr_upd">';
+				$renderer->doc .= $updated;
+				$renderer->doc .= '</td></tr>';
+			}
+			
             //$renderer->doc .= '<tr><td colspan="3">' . print_r($page, true) . '</td></tr>';
         }
         $renderer->doc .= '</table>';
